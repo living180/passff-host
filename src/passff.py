@@ -66,9 +66,7 @@ if __name__ == "__main__":
         pos_args = [receivedMessage[1], receivedMessage[2]]
     else:
         opt_args = ["show"]
-        key = receivedMessage[0]
-        key = "/" + (key[1:] if key[0] == "/" else key)
-        pos_args = [key]
+        pos_args = [receivedMessage[0]]
     opt_args += COMMAND_ARGS
 
     # Set up (modified) command environment
