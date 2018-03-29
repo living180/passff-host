@@ -50,22 +50,22 @@ def sendMessage(encodedMessage):
 if __name__ == "__main__":
     # Read message from standard input
     receivedMessage = getMessage()
-    opt_args = []
     pos_args = []
     std_input = None
 
     if len(receivedMessage) == 0:
-        pass
+        opt_args = ["list"]
     elif receivedMessage[0] == "insert":
         opt_args = ["insert", "-m"]
         pos_args = [receivedMessage[1]]
         std_input = receivedMessage[2]
     elif receivedMessage[0] == "generate":
-        pos_args = [receivedMessage[1], receivedMessage[2]]
         opt_args = ["generate"]
         if "-n" in receivedMessage[3:]:
             opt_args.append("-n")
+        pos_args = [receivedMessage[1], receivedMessage[2]]
     else:
+        opt_args = ["show"]
         key = receivedMessage[0]
         key = "/" + (key[1:] if key[0] == "/" else key)
         pos_args = [key]
