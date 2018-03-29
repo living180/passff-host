@@ -81,9 +81,10 @@ if __name__ == "__main__":
     # Set up subprocess params
     cmd = [COMMAND] + opt_args + ['--'] + pos_args
     proc_params = {
-        'input': bytes(std_input, CHARSET) if std_input else None,
+        'input': std_input,
         'stdout': subprocess.PIPE,
         'stderr': subprocess.PIPE,
+        'encoding': CHARSET,
         'env': env
     }
 
@@ -93,7 +94,7 @@ if __name__ == "__main__":
     # Send response
     sendMessage(encodeMessage({
         "exitCode": proc.returncode,
-        "stdout": proc.stdout.decode(CHARSET),
-        "stderr": proc.stderr.decode(CHARSET),
+        "stdout": proc.stdout,
+        "stderr": proc.stderr,
         "version": VERSION
     }))
