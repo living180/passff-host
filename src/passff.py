@@ -85,6 +85,7 @@ if __name__ == "__main__":
         'stdout': subprocess.PIPE,
         'stderr': subprocess.PIPE,
         'encoding': CHARSET,
+        'universal_newlines': True,
         'env': env
     }
 
